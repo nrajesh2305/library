@@ -1,5 +1,8 @@
 const myLibrary = new Array();
 
+const add_book_button = document.querySelector("button.add-book");
+const form = document.querySelector("form.add-book-form");
+
 function Book(title, author, num_pages, is_read)
 {
     // the constructor.
@@ -8,6 +11,11 @@ function Book(title, author, num_pages, is_read)
     this.num_pages = num_pages;
     this.is_read = is_read;
 }
+
+add_book_button.addEventListener("click", () =>
+{
+    form.style.visibility = "visible";
+});
 
 function addBookToLibrary()
 {

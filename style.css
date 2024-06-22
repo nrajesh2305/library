@@ -8,6 +8,7 @@ body
     margin: 0;
     padding: 0;
     font-family: var(--system-ui);
+    background-color: tan;
 }
 
 .global-container
@@ -37,4 +38,38 @@ button.add-book:hover
 {
     background-color: rgb(255, 57, 57);
     transition: 0.25s;
+}
+
+form.add-book-form
+{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    visibility: hidden;
+    grid-area: 2 / 1 / 5 / 2;
+    background-color: rgb(179, 255, 255);
+    border: 5px solid black;
+    border-radius: 25px;
+    margin: 1em;
+}
+
+form.add-book-form div
+{
+    display: grid;
+    align-content: space-evenly;
+    font-weight: bold;
+    margin: 1em;
+}
+
+form.add-book-form div:nth-child(4)
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+form input
+{
+    border-radius: 50px;
+    border: 2px solid black;
 }
