@@ -23,10 +23,10 @@ is_read_button.addEventListener("click", () =>
 {
     if(is_read_button.style.backgroundColor === "red")
     {
-        is_read_button.style.backgroundColor = "green";
+        is_read_button.style.backgroundColor = "lime";
         is_read_button.textContent = "Yes";
     }
-    else if(is_read_button.style.backgroundColor === "green")
+    else if(is_read_button.style.backgroundColor === "lime")
     {
         is_read_button.style.backgroundColor = "red";
         is_read_button.textContent = "No";

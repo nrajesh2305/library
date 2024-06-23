@@ -9,6 +9,7 @@ body
     padding: 0;
     font-family: var(--system-ui);
     background-color: tan;
+    font-size: 1.25vw;
 }
 
 .global-container
@@ -29,7 +30,7 @@ button.add-book
     cursor: pointer;
     background-color: rgb(255, 87, 87);
     border: 5px solid black;
-    font-size: 1.25rem;
+    font-size: 1.25vw;
     font-weight: bold;
     transition: 0.25s;
 }
@@ -84,9 +85,36 @@ form input
     cursor: pointer;
 }
 
+#submit:hover
+{
+    background-color: rgb(182, 182, 182);
+    cursor: pointer;
+}
+
 .shelf-area
 {
-    display: grid;
+    display: flex;
     background-color: #7c3f00;
     grid-area: 1 / 2 / 5 / 3;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.shelf-area div
+{
+    display: grid;
+    width: 75%;
+    height: 25%;
+    background-color: tan;
+    border: 5px solid black;
+    border-bottom: 0px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr;
+    flex-direction: row;
+}
+
+.shelf-area, .shelf-area div
+{
+    margin: 0;
+    padding: 0;
 }
