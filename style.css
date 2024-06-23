@@ -61,15 +61,25 @@ form.add-book-form div
     margin: 1em;
 }
 
-form.add-book-form div:nth-child(4)
+form.add-book-form div:nth-child(4)::first-line
 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    text-align: center;
 }
 
 form input
 {
     border-radius: 50px;
     border: 2px solid black;
+}
+
+#is_read
+{
+    background-color: red;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid black;
+    cursor: pointer;
 }
