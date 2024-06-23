@@ -83,3 +83,10 @@ form input
     border: 2px solid black;
     cursor: pointer;
 }
+
+.shelf-area
+{
+    display: grid;
+    background-color: #7c3f00;
+    grid-area: 1 / 2 / 5 / 3;
+}
