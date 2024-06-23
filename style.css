@@ -5,8 +5,6 @@
 
 body
 {
-    margin: 0;
-    padding: 0;
     font-family: var(--system-ui);
     background-color: tan;
     font-size: 1.25vw;
@@ -29,8 +27,8 @@ button.add-book
     border-radius: 25px;
     cursor: pointer;
     background-color: rgb(255, 87, 87);
-    border: 5px solid black;
-    font-size: 1.25vw;
+    border: 1.25px solid black;
+    font-size: 2vw;
     font-weight: bold;
     transition: 0.25s;
 }
@@ -49,7 +47,7 @@ form.add-book-form
     visibility: hidden;
     grid-area: 2 / 1 / 5 / 2;
     background-color: rgb(179, 255, 255);
-    border: 5px solid black;
+    border: 1px solid black;
     border-radius: 25px;
     margin: 1em;
 }
@@ -57,7 +55,7 @@ form.add-book-form
 form.add-book-form div
 {
     display: grid;
-    align-content: space-evenly;
+    align-content: space-around;
     font-weight: bold;
     margin: 1em;
 }
@@ -72,8 +70,24 @@ form.add-book-form div:nth-child(4)::first-line
 
 form input
 {
-    border-radius: 50px;
-    border: 2px solid black;
+    border-radius: clamp(45px, 50px, 55px);
+    border: 0.5px solid black;
+    width: clamp(12.5vw, 15vw, 20vw);
+    height: 4vh;
+    max-height: 5vw;
+    font-size: 1.5vw;
+    text-align: center;
+
+}
+
+form input ::-webkit-outer-spin-button, form input ::-webkit-inner-spin-button
+{
+    display: none;
+}
+
+::placeholder
+{
+    font-size: 50%;
 }
 
 #is_read
@@ -81,8 +95,20 @@ form input
     background-color: red;
     text-align: center;
     border-radius: 50px;
-    border: 2px solid black;
+    border: 0.5px solid black;
     cursor: pointer;
+    height: clamp(50%, 6vh, 7.5vh);
+    font-size: max(0.8em, 8%);
+    transition: 0.1s;
+}
+
+#submit
+{
+    display: grid;
+    height: clamp(2.5vh, 6vh, 7vh);
+    font-size: max(0.8em, 8%);
+    width: 12.5vw;
+    justify-self: center;
 }
 
 #submit:hover
@@ -113,7 +139,7 @@ form input
     flex-direction: row;
 }
 
-.shelf-area, .shelf-area div
+body, .shelf-area
 {
     margin: 0;
     padding: 0;
