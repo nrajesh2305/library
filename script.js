@@ -65,11 +65,11 @@ function addBookToLibrary()
     // on the press of the button on the screen, add the book to the library.
     let book = this.title.value;
     myLibrary.push(book);
-    addShelf();
+    addShelfOrBook();
     return myLibrary;
 }
 
-function addShelf()
+function addShelfOrBook()
 {
     // Add a shelf on top of the other shelves if the amount of books in the current shelf
     // has 8 books, and if so, the 9th book they are trying to add with now be put into the top shelf

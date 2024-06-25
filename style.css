@@ -122,8 +122,8 @@ form input ::-webkit-outer-spin-button, form input ::-webkit-inner-spin-button
     display: flex;
     background-color: #7c3f00;
     grid-area: 1 / 2 / 5 / 3;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
     align-items: center;
 }
 .shelf-area div
@@ -142,8 +142,8 @@ form input ::-webkit-outer-spin-button, form input ::-webkit-inner-spin-button
 .shelf-area div div
 {
     /* Generate a random light color for each of the books here. */
-    border: 2px solid black;
-    height: 97%;
+    border: 0.5px solid black;
+    height: 98.5%;
     width: 100%;
     align-self: flex-start;
 }
