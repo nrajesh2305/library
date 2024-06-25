@@ -17,7 +17,7 @@
         <button class="add-book">
             ADD BOOK
         </button>
-        <form action="" method="get" class="add-book-form">
+        <form action="" method="get" class="add-book-form" id="book-form">
             <div>
                 <label for="name">BOOK TITLE</label>
                 <input type="text" name="title" id="title" required>
@@ -37,11 +37,10 @@
                 </button>
             </div>
             <div>
-                <input type="submit" value="Submit" id="submit" onclick="addBookToLibrary()">
+                <input type="submit" value="Submit" id="submit" onclick="addBookToLibrary(); addShelf()">
             </div>
         </form>
         <div class="shelf-area">
-            
         </div>
     </div>
 </body>
