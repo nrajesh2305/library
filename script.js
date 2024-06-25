@@ -6,8 +6,6 @@ const is_read_button = document.querySelector("#is_read");
 is_read_button.style.backgroundColor = "red";
 const submit_button = document.querySelector("#submit");
 let title = document.querySelector("#title");
-let author = document.querySelector("#author");
-let numPages = document.querySelector("#numPages");
 const shelf_area = document.querySelector(".shelf-area");
 
 function Book(title, author, num_pages, is_read)
@@ -37,12 +35,24 @@ is_read_button.addEventListener("click", () =>
     }
 });
 
-submit_button.addEventListener("submit", function(event)
+book_form.addEventListener("submit", function(event)
 {
-    if(title.textContent != null && author.textContent != null && numPages.textContent != null)
+    let inputs = document.querySelectorAll("form input");
+    let is_all_filled = true;
+
+    inputs.forEach(function(input)
     {
+        if(!input.value.trim())
+        {
+            is_all_filled = false;
+        }
+    });
+    if(is_all_filled)
+    {
+        console.log(this);
         event.preventDefault();
-        this.reset();  
+        this.reset();
+        form.style.visibility = "hidden";
     }
 });
 
