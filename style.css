@@ -130,13 +130,22 @@ form input ::-webkit-outer-spin-button, form input ::-webkit-inner-spin-button
 {
     display: grid;
     width: 75%;
-    height: 25%;
+    height: 20%;
     background-color: tan;
     border: 5px solid black;
     border-bottom: 0px;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr;
     flex-direction: row;
+}
+
+.shelf-area div div
+{
+    /* Generate a random light color for each of the books here. */
+    border: 2px solid black;
+    height: 97%;
+    width: 100%;
+    align-self: flex-start;
 }
 
 body, .shelf-area

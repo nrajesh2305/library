@@ -7,6 +7,7 @@ is_read_button.style.backgroundColor = "red";
 const submit_button = document.querySelector("#submit");
 let title = document.querySelector("#title");
 const shelf_area = document.querySelector(".shelf-area");
+const shelf = document.querySelector(".shelf-area div");
 
 function Book(title, author, num_pages, is_read)
 {
@@ -49,10 +50,13 @@ book_form.addEventListener("submit", function(event)
     });
     if(is_all_filled)
     {
-        console.log(this);
+        // Do this if you want to prevent refreshing the entire page, 
+        // and only plan to do so in a specific part. 
         event.preventDefault();
+        // We are only resetting the form. Not the page. :)
         this.reset();
         form.style.visibility = "hidden";
+        addBookToLibrary();
     }
 });
 
@@ -61,6 +65,7 @@ function addBookToLibrary()
     // on the press of the button on the screen, add the book to the library.
     let book = this.title.value;
     myLibrary.push(book);
+    addShelf();
     return myLibrary;
 }
 
@@ -69,7 +74,16 @@ function addShelf()
     // Add a shelf on top of the other shelves if the amount of books in the current shelf
     // has 8 books, and if so, the 9th book they are trying to add with now be put into the top shelf
     // above it.
-    new_div = document.createElement("div");
-    shelf_area.appendChild(new_div);
+    if(myLibrary.length === 1 || myLibrary.length % 8 === 1)
+    {
+        new_shelf = document.createElement("div");
+        shelf_area.appendChild(new_shelf);
+    }
+    new_book = document.createElement("div");
+    new_shelf.appendChild(new_book);
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    new_book.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
     return shelf_area;
 }
