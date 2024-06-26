@@ -6,6 +6,7 @@ const is_read_button = document.querySelector("#is_read");
 is_read_button.style.backgroundColor = "red";
 const submit_button = document.querySelector("#submit");
 let title = document.querySelector("#title");
+let author = document.querySelector("#author");
 const shelf_area = document.querySelector(".shelf-area");
 const shelf = document.querySelector(".shelf-area div");
 
@@ -52,11 +53,11 @@ book_form.addEventListener("submit", function(event)
     {
         // Do this if you want to prevent refreshing the entire page, 
         // and only plan to do so in a specific part. 
-        event.preventDefault();
-        // We are only resetting the form. Not the page. :)
-        this.reset();
-        form.style.visibility = "hidden";
         addBookToLibrary();
+        event.preventDefault();
+        // We are only resetting the form. Not the page.
+        form.style.visibility = "hidden";
+        this.reset();
     }
 });
 
@@ -85,5 +86,6 @@ function addShelfOrBook()
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
     new_book.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+    new_book.textContent = this.title.value + "\n" + this.author.value;
     return shelf_area;
 }

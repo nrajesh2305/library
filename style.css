@@ -52,6 +52,8 @@ form.add-book-form
     margin: 1em;
 }
 
+
+
 form.add-book-form div
 {
     display: grid;
@@ -80,9 +82,10 @@ form input
 
 }
 
-form input ::-webkit-outer-spin-button, form input ::-webkit-inner-spin-button
+form input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
 {
-    display: none;
+    width: 1px;
+
 }
 
 ::placeholder
@@ -136,16 +139,18 @@ form input ::-webkit-outer-spin-button, form input ::-webkit-inner-spin-button
     border-bottom: 0px;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
+    font-style: italic;
 }
 
 .shelf-area div div
 {
-    /* Generate a random light color for each of the books here. */
+    display: flex;
     border: 0.5px solid black;
     height: 98.5%;
     width: 100%;
-    align-self: flex-start;
 }
 
 body, .shelf-area
