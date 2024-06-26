@@ -23,22 +23,18 @@ function Book(title, author, num_pages, is_read)
 
 add_book_button.addEventListener("click", () =>
 {
-    form.style.visibility = "visible";
-    add_book_button.textContent = "CLOSE FORM";
-    add_book_button.addEventListener("click", () =>
+    if(book_form.style.visibility === "visible")
     {
-        if(add_book_button.textContent === "CLOSE FORM")
-        {
-            add_book_button.textContent = "ADD BOOK";
-            form.style.visibility = "hidden";
-        }
-        else if(add_book_button.textContent === "ADD BOOK")
-        {
-            add_book_button.textContent = "CLOSE FORM";
-            form.style.visibility = "visible";
-        }
-        form.reset();
-    });
+        book_form.style.visibility = "hidden";
+        add_book_button.textContent = "ADD BOOK";
+        is_read_button.style.backgroundColor = "red";
+        is_read_button.textContent = "No";
+    }
+    else
+    {
+        book_form.style.visibility = "visible";
+        add_book_button.textContent = "CLOSE FORM";
+    }
 });
 
 
@@ -79,6 +75,9 @@ book_form.addEventListener("submit", function(event)
         // We are only resetting the form. Not the page.
         form.style.visibility = "hidden";
         add_book_button.textContent = "ADD BOOK";
+        is_read_button.style.backgroundColor = "red";
+        is_read_button.textContent = "No";
+        confirmed_read = false;
         this.reset();
     }
 });
