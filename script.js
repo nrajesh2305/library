@@ -7,9 +7,11 @@ is_read_button.style.backgroundColor = "red";
 const submit_button = document.querySelector("#submit");
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
-let numPages = document.querySelector("#numPages")
+let numPages = document.querySelector("#numPages");
+let isRead = document.querySelector("#is_read");
 const shelf_area = document.querySelector(".shelf-area");
 const shelf = document.querySelector(".shelf-area div");
+let confirmed_read = false;
 
 function Book(title, author, num_pages, is_read)
 {
@@ -22,7 +24,23 @@ function Book(title, author, num_pages, is_read)
 add_book_button.addEventListener("click", () =>
 {
     form.style.visibility = "visible";
+    add_book_button.textContent = "CLOSE FORM";
+    add_book_button.addEventListener("click", () =>
+    {
+        if(add_book_button.textContent === "CLOSE FORM")
+        {
+            add_book_button.textContent = "ADD BOOK";
+            form.style.visibility = "hidden";
+        }
+        else if(add_book_button.textContent === "ADD BOOK")
+        {
+            add_book_button.textContent = "CLOSE FORM";
+            form.style.visibility = "visible";
+        }
+        form.reset();
+    });
 });
+
 
 is_read_button.addEventListener("click", () =>
 {
@@ -30,11 +48,13 @@ is_read_button.addEventListener("click", () =>
     {
         is_read_button.style.backgroundColor = "lime";
         is_read_button.textContent = "Yes";
+        confirmed_read = true;
     }
     else if(is_read_button.style.backgroundColor === "lime")
     {
         is_read_button.style.backgroundColor = "red";
         is_read_button.textContent = "No";
+        confirmed_read = false;
     }
 });
 
@@ -58,6 +78,7 @@ book_form.addEventListener("submit", function(event)
         event.preventDefault();
         // We are only resetting the form. Not the page.
         form.style.visibility = "hidden";
+        add_book_button.textContent = "ADD BOOK";
         this.reset();
     }
 });
@@ -92,6 +113,15 @@ function addShelfOrBook()
     new_book.textContent += "By: " + this.author.value;
     new_book.textContent += "\n\n";
     new_book.textContent += this.numPages.value + " pages";
+    new_book.textContent += "\n\n";
+    if(confirmed_read)
+    {
+        new_book.textContent += "READ";   
+    }
+    else
+    {
+        new_book.textContent += "NOT READ";
+    }
     new_book.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
 
     return shelf_area;
