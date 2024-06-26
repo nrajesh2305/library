@@ -7,6 +7,7 @@ is_read_button.style.backgroundColor = "red";
 const submit_button = document.querySelector("#submit");
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
+let numPages = document.querySelector("#numPages")
 const shelf_area = document.querySelector(".shelf-area");
 const shelf = document.querySelector(".shelf-area div");
 
@@ -85,7 +86,13 @@ function addShelfOrBook()
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
+    new_book.setAttribute("style", "white-space: pre;");
+    new_book.textContent = this.title.value;
+    new_book.textContent += "\n\n";
+    new_book.textContent += "By: " + this.author.value;
+    new_book.textContent += "\n\n";
+    new_book.textContent += this.numPages.value + " pages";
     new_book.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
-    new_book.textContent = this.title.value + "\n" + this.author.value;
+
     return shelf_area;
 }

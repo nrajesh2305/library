@@ -141,6 +141,7 @@ form input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
     grid-template-rows: 1fr;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: row;
     font-style: italic;
 }
