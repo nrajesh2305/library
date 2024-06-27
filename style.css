@@ -19,23 +19,39 @@ body
 
 button.add-book
 {
-    display: grid;
+    background-color: lemonchiffon;
     grid-area: 1 / 1 / 1 / 2;
+}
+
+button.delete-book
+{
+    background-color: rgb(255, 87, 87);
+    grid-area: 2 / 1 / 2 / 2;
+}
+
+button.add-book, button.delete-book
+{
+    display: grid;
     margin: 1em;
     justify-content: center;
     align-content: center;
     border-radius: 25px;
     cursor: pointer;
-    background-color: rgb(255, 87, 87);
-    border: 1.25px solid black;
     font-size: 2vw;
     font-weight: bold;
     transition: 0.25s;
+    border: 1.25px solid black;
 }
 
 button.add-book:hover
 {
-    background-color: rgb(255, 57, 57);
+    background-color: rgb(218, 213, 174);
+    transition: 0.25s;
+}
+
+button.delete-book:hover
+{
+    background-color: rgb(185, 0, 0);
     transition: 0.25s;
 }
 
