@@ -170,6 +170,15 @@ form input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
     width: 100%;
 }
 
+button.delete_book_button
+{
+    display: none;
+    background-color: red;
+    background-image: url("svgs/close-circle-outline.svg");
+    width: 20%;
+    height: 20%;
+}
+
 body, .shelf-area
 {
     margin: 0;

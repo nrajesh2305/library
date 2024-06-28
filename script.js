@@ -15,7 +15,7 @@ const delete_book_button = document.querySelector("button.delete-book");
 let confirmed_read = false;
 let delete_mode = false;
 
-function Book(title, author, num_pages, is_read)
+function Book(title, author, num_pages, is_read) 
 {
     this.title = title;
     this.author = author;
@@ -23,28 +23,26 @@ function Book(title, author, num_pages, is_read)
     this.is_read = is_read;
 }
 
-add_book_button.addEventListener("click", () =>
+add_book_button.addEventListener("click", () => 
 {
-    if(book_form.style.visibility === "visible")
-    {
+    if (book_form.style.visibility === "visible") {
         book_form.style.visibility = "hidden";
         add_book_button.textContent = "ADD BOOK";
         is_read_button.style.backgroundColor = "red";
         is_read_button.textContent = "No";
-    }
-    else
-    {
+    } else {
         book_form.style.visibility = "visible";
         add_book_button.textContent = "CLOSE FORM";
     }
 });
 
-delete_book_button.addEventListener("click", () =>
+delete_book_button.addEventListener("click", () => 
 {
-    if(myLibrary.length === 0)
+    if (myLibrary.length === 0) 
     {
         delete_book_button.textContent = "The Library is Empty!";
-        setTimeout(function(){
+        setTimeout(function () 
+        {
             delete_book_button.textContent = "DELETE BOOK";
         }, 3000);
     }
@@ -52,37 +50,32 @@ delete_book_button.addEventListener("click", () =>
     {
         myLibrary.pop();
         shelf_area.textContent = "";
-        console.log(myLibrary.length);
-    }
-    else
+    } 
+    else 
     {
-        // Allow user to click on book, hover = cursor.
-        // this is only happening once they click the delete book button.
-        // Once they click the button, and click a specific book, we will
-        // grab that specific book, if it is in the list, and delete it from the list.
-        // we then make the text content the same as the new list.
         delete_mode = !delete_mode;
-        delete_book_button.textContent = "Choose a Book to Delete";
-
-        // We have to find a way to get the user input from clicking any book in the shelf
-        // area.
-        chosen_book = "";
-
-        myLibrary.splice(myLibrary.indexOf(chosen_book.value), 1);
-        // shelf_area.textContent = myLibrary.;
+        delete_book_button.textContent = delete_mode ? "Choose a Book to Delete" : "DELETE BOOK";
+        // Highlight the delete button in red when delete mode is activated
+        if (delete_mode) 
+        {
+            delete_book_button.style.backgroundColor = "red";
+        } 
+        else 
+        {
+            delete_book_button.style.backgroundColor = "rgb(255, 87, 87)";
+        }
     }
 });
 
-
-is_read_button.addEventListener("click", () =>
+is_read_button.addEventListener("click", () => 
 {
-    if(is_read_button.style.backgroundColor === "red")
+    if (is_read_button.style.backgroundColor === "red") 
     {
         is_read_button.style.backgroundColor = "lime";
         is_read_button.textContent = "Yes";
         confirmed_read = true;
-    }
-    else if(is_read_button.style.backgroundColor === "lime")
+    } 
+    else if (is_read_button.style.backgroundColor === "lime") 
     {
         is_read_button.style.backgroundColor = "red";
         is_read_button.textContent = "No";
@@ -90,25 +83,22 @@ is_read_button.addEventListener("click", () =>
     }
 });
 
-book_form.addEventListener("submit", function(event)
+book_form.addEventListener("submit", function (event) 
 {
     let inputs = document.querySelectorAll("form input");
     let is_all_filled = true;
 
-    inputs.forEach(function(input)
+    inputs.forEach(function (input) 
     {
-        if(!input.value.trim())
+        if (!input.value.trim()) 
         {
             is_all_filled = false;
         }
     });
-    if(is_all_filled)
+    if (is_all_filled) 
     {
-        // Do this if you want to prevent refreshing the entire page, 
-        // and only plan to do so in a specific part. 
         addBookToLibrary();
         event.preventDefault();
-        // We are only resetting the form. Not the page.
         form.style.visibility = "hidden";
         add_book_button.textContent = "ADD BOOK";
         is_read_button.style.backgroundColor = "red";
@@ -118,38 +108,44 @@ book_form.addEventListener("submit", function(event)
     }
 });
 
-function addBookToLibrary()
-{
-    // on the press of the button on the screen, add the book to the library.
-    let book = this.title.value;
+function addBookToLibrary() {
+    let book = {
+        title: title.value,
+        author: author.value,
+        numPages: numPages.value,
+        isRead: confirmed_read
+    };
     myLibrary.push(book);
-    addShelfOrBook();
-    return myLibrary;
+    addShelfOrBook(book);
 }
 
-function addShelfOrBook()
+function addShelfOrBook(book) 
 {
-    // Add a shelf on top of the other shelves if the amount of books in the current shelf
-    // has 8 books, and if so, the 9th book they are trying to add with now be put into the top shelf
-    // above it.
-    if(myLibrary.length === 1 || myLibrary.length % 8 === 1)
-    {
+    let new_shelf;
+    if (myLibrary.length === 1 || myLibrary.length % 8 === 1) {
         new_shelf = document.createElement("div");
         shelf_area.appendChild(new_shelf);
+    } 
+    else 
+    {
+        new_shelf = shelf_area.lastChild;
     }
-    new_book = document.createElement("div");
+
+    let new_book = document.createElement("div");
     new_shelf.appendChild(new_book);
+
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
-    new_book.setAttribute("style", "white-space: pre;");
+
+    new_book.setAttribute("style", "white-space: pre-wrap;");
     new_book.textContent = this.title.value;
     new_book.textContent += "\n\n";
     new_book.textContent += "By: " + this.author.value;
     new_book.textContent += "\n\n";
     new_book.textContent += this.numPages.value + " pages";
-    new_book.textContent += "\n\n";
-    if(confirmed_read)
+    new_book.textContent += "\n";
+    if(book.isRead)
     {
         new_book.textContent += "READ";   
     }
@@ -160,22 +156,22 @@ function addShelfOrBook()
     new_book.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
     new_book.addEventListener("click", () => 
     {
-        if(delete_mode)
+        if (delete_mode) 
         {
-            let index = myLibrary.indexOf(new_book);
-            if(index > -1)
+            let index = myLibrary.indexOf(book);
+            if (index > -1) 
             {
                 myLibrary.splice(index, 1);
-                shelf_area.removeChild(new_shelf);
-                new_book.style.visibility = "hidden";
-                if(new_shelf.childElementCount() === 0)
+                new_book.remove();
+                if (new_shelf.childElementCount === 0) 
                 {
-                    shelf_area.removeChild(new_shelf);    
-                }   
+                    shelf_area.removeChild(new_shelf);
+                }
+                delete_mode = false;
+                delete_book_button.textContent = "DELETE BOOK";
+                delete_book_button.style.backgroundColor = "rgb(255, 87, 87)";
             }
         }
-        delete_mode = false;
-        delete_book_button.textContent = "DELETE BOOK";
     });
     return shelf_area;
 }
