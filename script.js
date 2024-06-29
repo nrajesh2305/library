@@ -108,8 +108,10 @@ book_form.addEventListener("submit", function (event)
     }
 });
 
-function addBookToLibrary() {
-    let book = {
+function addBookToLibrary() 
+{
+    let book = 
+    {
         title: title.value,
         author: author.value,
         numPages: numPages.value,
@@ -122,7 +124,8 @@ function addBookToLibrary() {
 function addShelfOrBook(book) 
 {
     let new_shelf;
-    if (myLibrary.length === 1 || myLibrary.length % 8 === 1) {
+    if (myLibrary.length === 1 || myLibrary.length % 8 === 1) 
+    {
         new_shelf = document.createElement("div");
         shelf_area.appendChild(new_shelf);
     } 
